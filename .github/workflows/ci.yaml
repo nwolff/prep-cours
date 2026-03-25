@@ -1,0 +1,36 @@
+name: Compile All Files
+on:
+  push:
+    branches:
+      - "**" # CI happens on branches. We merge branches when we are satisfied
+      - "!main" # A push to main triggers a release, no need for CI
+  pull_request:
+    branches:
+      - "main" # ensures CI runs when someone targets a PR at main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+
+      - name: Show available fonts
+        run: typst fonts --font-path ./fonts
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Compile via Python Script
+        run: python compile.py
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs
+          path: output/**/*.pdf
