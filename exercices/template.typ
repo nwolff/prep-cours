@@ -16,7 +16,7 @@
 
     footer-descent: 30pt,
     footer: context {
-      set text(size: 0.9em, fill: gray)
+      set text(size: 0.9em, fill: black.lighten(30%))
       let current = counter(page).at(here()).first()
       let last = counter(page).final().first()
 
