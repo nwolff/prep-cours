@@ -13,6 +13,11 @@
   set page(
     paper: "a4",
     margin: (x: 2.5cm, y: 2cm),
+    fill: if show-answers {
+      rgb("#fff0e0")
+    } else {
+      white
+    },
 
     footer-descent: 30pt,
     footer: context {
