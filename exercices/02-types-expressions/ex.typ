@@ -40,9 +40,8 @@
 #ex("Analyse d'erreurs", taxonomy: "G")[
   Corriger ces expressions , en utilisant si possible des conversions `float()`, `int()`, `str()`
 
-  - `10.5 + "2"` #a[`10.5 + float(2)`]
+  - `10.5 + "2"` #a[`10.5 + int(2)` alternativement:  `10.5 + float(2)`]
   - `int("Vingt")` #a[`int("20")`]
-  - `True and "False"` #a[`True and False`]
   - `"Batman " + 8` #a[`"Batman " + str(8)`]
   - `1,5 * 2` #a[`1.5 * 2`]
 ]
