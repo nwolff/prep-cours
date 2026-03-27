@@ -108,20 +108,16 @@
   body
 }
 
-#let show-taxonomy = show-answers
-
 #let ex_counter = counter("exercise")
 
 // An exercise
-#let ex(title, taxonomy: none, body) = {
+#let ex(title, body) = {
   ex_counter.step()
-
-  let label = if show-taxonomy and taxonomy != none [(#taxonomy)]
 
   // ex_counter.display() needs a context, we give it the document context
   context {
     block(breakable: false, width: 100%, above: 2em)[
-      == Exercice #ex_counter.display() : #title #label
+      == Exercice #ex_counter.display() : #title
       #body
     ]
   }

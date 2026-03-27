@@ -4,7 +4,7 @@
 
 #title[ Série d'exercices : Types, Expressions ]
 
-#ex("La calculatrice de l'esprit", taxonomy: "A")[
+#ex("La calculatrice de l'esprit")[
   Sans utiliser d'ordinateur, prédire la valeur et le type Python des expressions suivantes :
 
   #table(
@@ -19,7 +19,7 @@
   )
 ]
 
-#ex("Le profil du gamer", taxonomy: "M")[
+#ex("Le profil du gamer")[
   On veut créer la fiche d'un joueur dans un jeu en ligne. Quel type Python choisir pour stocker ces informations ?
 
   - Le pseudonyme (ex: "ShadowBlade") #a[`str`]
@@ -28,7 +28,7 @@
   - Le compte est-il activé ? (Oui/Non) #a[`bool`]
 ]
 
-#ex("Gestion de stock", taxonomy: "D")[
+#ex("Gestion de stock")[
   Un marchand d'œufs dispose de 50 œufs. Il les range dans des boîtes de 6.
 
   - Quelle expression calcule le nombre de boîtes totalement remplies ? #a[`50 // 6`]
@@ -37,7 +37,7 @@
 ]
 
 
-#ex("Analyse d'erreurs", taxonomy: "G")[
+#ex("Analyse d'erreurs")[
   Corriger ces expressions , en utilisant si possible des conversions `float()`, `int()`, `str()`
 
   - `10.5 + "2"` #a[`10.5 + int(2)` alternativement:  `10.5 + float(2)`]
@@ -46,7 +46,7 @@
   - `1,5 * 2` #a[`1.5 * 2`]
 ]
 
-#ex("Circuit logique", taxonomy: "X")[
+#ex("Circuit logique")[
   Décomposer l'évaluation de cette expression : `not (10 == 10.0) or (5 * 2 > 8)`
 
   - `(10 == 10.0)` devient #a[`True`]
@@ -56,20 +56,20 @@
   - Résultat final #a[`True`]
 ]
 
-#ex("Construction de message", taxonomy: "M")[
+#ex("Construction de message")[
   En utilisant uniquement les chaînes `"Alerte"`, `"Rouge"`, `"!"` et une chaîne contenant un espace `" "`, écrire l'expression (avec l'opérateur de concaténation `+`) pour obtenir : `"Alerte Rouge!"`.
 
   Réponse #a[`"Alerte" + " " + "Rouge" + "!"`]
 ]
 
-#ex("L'ordre des priorités", taxonomy: "A")[
+#ex("L'ordre des priorités")[
   Décomposer les étapes de l'évaluation de ces deux expressions :
   - `not(True or True)` #a[`not(True)` -> `False`]
   - `not True or True` #a[`(not True) or True` -> `False or True` -> `True`]
   - Justifier la différence #a[`not` a une priorité plus élevée que `and`]
 
 
-  #ex("Le traducteur de texte", taxonomy: "D")[
+  #ex("Le traducteur de texte")[
     On a l'expression suivante : `float("10") + 5`
 
     - Quelle est la valeur et le type du résultat ? #a[`15.0   float`]
@@ -77,14 +77,14 @@
   ]
 ]
 
-#ex("Le classement alphabétique", taxonomy: "X")[
+#ex("Le classement alphabétique")[
   Déterminer si ces expressions sont `True` ou `False` :
   - `"Zèbre" < "Abeille"` #a[`False`]
   - `"Chien" > "Chat"` #a[`True`]
   - `"A" == "a"` #a[`False`]
 ]
 
-#ex("Le système de sécurité", taxonomy: "E")[
+#ex("Le système de sécurité")[
   Un coffre-fort s'ouvre si l'expression suivante est `True`:
 
   `(2**3 > 7) and not (15 % 2 == 0)`
