@@ -1,6 +1,11 @@
 # Mac
 .DS_Store
 
+# IDEs
+.idea/
+.vscode/
+
+
 # Github should build these, ignore any file we accidentally create on the development machine
 *.pdf
 
