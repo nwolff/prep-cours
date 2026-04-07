@@ -67,15 +67,18 @@ def compile_exercises() -> List[bool]:
 
     for typ_file in typ_files:
         versions = [
-            (target_dir / f"{typ_file.parent.name}.pdf", {"show-answers": "false"}),
+            (
+                target_dir / f"{typ_file.parent.name}.pdf",
+                {"show-answers": "false"},
+            ),
             (
                 target_dir / f"{typ_file.parent.name}-solutions.pdf",
                 {"show-answers": "true"},
             ),
         ]
 
-        for out_path, vars_dict in versions:
-            success = run_typst(typ_file, out_path, inputs=vars_dict)
+        for out_path, inputs in versions:
+            success = run_typst(typ_file, out_path, inputs=inputs)
             results.append(success)
     return results
 

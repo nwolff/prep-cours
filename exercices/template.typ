@@ -1,12 +1,14 @@
-// Default to true for editing, but CLI can override with --input show-answers=false
+// Default to false for editing, but CLI can override with --input show-answers=true
 #let inputs = (
-  show-answers: "true",
+  show-answers: "false",
   ..sys.inputs,
 )
 
 #let show-answers = inputs.show-answers == "true"
 
 #let dot-style = text(fill: black.lighten(30%), baseline: 3pt)[.]
+
+#let strut = box(width: 0pt, height: 0.6em)
 
 // An exercise series
 #let series(body) = {
@@ -41,6 +43,7 @@
 
   set list(spacing: 1.15em)
 
+
   show table: set align(center)
   set table(
     inset: 0.7em,
@@ -53,11 +56,16 @@
   show title: it => pad(y: 0.9em, it)
 
   show heading.where(level: 2): it => [
-    #block(above: 1.5em, below: 0.7em, sticky: true, breakable: false)[
+    #v(0.3em)
+    #block(below: 1em, sticky: true, breakable: false)[
       #it
     ]
   ]
 
+  // Slightly larger size for math
+  show math.equation: set text(size: 1.1em)
+
+  // python by default
   set raw(lang: "python")
 
   // Inline and block code
@@ -67,12 +75,12 @@
       inset: if it.block { 8pt } else { (x: 3pt) },
     )
 
-    // Use a slightly larger size for the code
+    // Slightly larger size for code
     set text(font: "Hack", size: 1.15em)
 
     if it.block {
-      // Move the block to the right and up
-      pad(left: 1em, top: -1em)[
+      // Move the block slightly to the right and up
+      pad(left: 2em, top: -0.5em)[
         #block(width: 100%, ..styles)[
           #grid(
             columns: (auto, 1fr),
@@ -96,7 +104,7 @@
   }
 
 
-  // This only appears once at the very start of the document
+  // The first page header
   if show-answers {
     place(top, dy: -1cm)[
       Solutions
@@ -129,8 +137,8 @@
 }
 
 
-// The placeholder adapts to the size of the answer
-#let placeholder(answer_body) = context {
+// A placeholder sized automatically to the width of the answer
+#let auto-placeholder(answer_body) = context {
   let size = measure(answer_body)
   let small-threshold = 130pt
   let full-line-threshold = 250pt
@@ -146,16 +154,39 @@
   }
 }
 
-// An answer (with a placeholder by default)
-#let a(body, want-placeholder: true) = {
+// An answer. The `blank` parameter controls student-mode rendering:
+// - #a[text]            → blank: auto  → dots sized to the answer length
+// - #a(blank: none)[text] → no placeholder (e.g. for code blocks handled by #an)
+// - #a(blank: 3)[text]  → 3 full-width dotted lines
+#let a(body, blank: auto) = {
   if show-answers {
-    h(1fr)
-    body
-  } else if want-placeholder {
-    placeholder(body)
+    if type(blank) == int {
+      block(
+        width: 100%,
+        above: 1em,
+        inset: (left: 0.8em, top: 0.3em, bottom: 0.3em),
+      )[#body]
+    } else {
+      h(1fr)
+      body
+    }
+  } else {
+    if type(blank) == int {
+      for i in range(blank) {
+        v(0.2em)
+        box(width: 100%, repeat(dot-style))
+        linebreak()
+      }
+      v(1em)
+    } else if blank == auto {
+      auto-placeholder(body)
+    }
+    // blank: none → nothing shown in student mode
   }
 }
 
-
-// An answer with no placeholder
-#let an = a.with(want-placeholder: false)
+#let an = a.with(blank: none)
+#let a1 = a.with(blank: 1)
+#let a2 = a.with(blank: 2)
+#let a3 = a.with(blank: 3)
+#let a4 = a.with(blank: 4)

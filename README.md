@@ -1,14 +1,8 @@
 # typst
 
-Just discovered typst, wow
-
-Install the compiler with homebrew:
+Install the compiler with homebrew (alternatively download the prebuilt binary and xattr -d com.apple.quarantine ):
 
         brew install typst
-
-Install the formatter with homebrew (don't really know if it's useful yet):
-
-        brew install typstfmt
 
 For vscode install:
 

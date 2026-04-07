@@ -40,7 +40,7 @@
 #ex("Analyse d'erreurs")[
   Corriger ces expressions , en utilisant si possible des conversions `float()`, `int()`, `str()`
 
-  - `10.5 + "2"` #a[`10.5 + int(2)` alternativement:  `10.5 + float(2)`]
+  - `10.5 + "2"` #a[`10.5 + int(2)`]
   - `int("Vingt")` #a[`int("20")`]
   - `"Batman " + 8` #a[`"Batman " + str(8)`]
   - `1,5 * 2` #a[`1.5 * 2`]
@@ -72,8 +72,8 @@
   #ex("Le traducteur de texte")[
     On a l'expression suivante : `float("10") + 5`
 
-    - Quelle est la valeur et le type du résultat ? #a[`15.0   float`]
-    - Pourquoi utiliser `float()` au lieu de juste `"10"` ? #a[Car il n'est pas possible de concaténer ou d'additionner un `str` et un `int`]
+    - Quelle est la valeur et le type du résultat ? #a[valeur: `15.0`, type: `float`]
+    - Pourquoi utiliser `float()` au lieu de juste `"10"` ? #a[`str` + `int` est indéfini]
   ]
 ]
 
