@@ -3,18 +3,18 @@
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
-# Configuration Constants
 REPO_ROOT: Path = Path(__file__).parent.resolve()
-EXERCISES_DIR: Path = REPO_ROOT / "exercices"
+PROGRAMMATION_DIR: Path = REPO_ROOT / "programmation"
+EXERCISES_DIR: Path = PROGRAMMATION_DIR / "exercices"
+DONNEES_DIR: Path = REPO_ROOT / "donnees"
 OUTPUT_DIR: Path = REPO_ROOT / "output"
 FONT_DIR: Path = REPO_ROOT / "fonts"
-TEMPLATE_NAME: str = "template.typ"
+TEMPLATE_NAME: str = "template-exercices.typ"
 
 
 def get_typ_files(directory: Path, recursive: bool = False) -> List[Path]:
-    """Finds .typ files in a directory, excluding templates and private files."""
     pattern: str = "**/*.typ" if recursive else "*.typ"
     return [
         f
@@ -26,10 +26,6 @@ def get_typ_files(directory: Path, recursive: bool = False) -> List[Path]:
 def run_typst(
     input_path: Path, output_path: Path, inputs: Optional[Dict[str, str]] = None
 ) -> bool:
-    """
-    Executes the Typst CLI.
-    Returns True if compilation succeeded, False otherwise.
-    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     cmd: List[str] = [
@@ -48,7 +44,6 @@ def run_typst(
 
     print(f"🔨 Compiling: {input_path.name} -> {output_path.relative_to(REPO_ROOT)}")
 
-    # run() returns a CompletedProcess object; we check the returncode
     result = subprocess.run(cmd)
 
     if result.returncode == 0:
@@ -60,38 +55,38 @@ def run_typst(
 
 
 def compile_exercises() -> List[bool]:
-    """Handles nested /exercises. Returns a list of success booleans."""
     results = []
     target_dir: Path = OUTPUT_DIR / "exercices"
     typ_files: List[Path] = get_typ_files(EXERCISES_DIR, recursive=True)
 
     for typ_file in typ_files:
         versions = [
-            (
-                target_dir / f"{typ_file.parent.name}.pdf",
-                {"show-answers": "false"},
-            ),
-            (
-                target_dir / f"{typ_file.parent.name}-solutions.pdf",
-                {"show-answers": "true"},
-            ),
+            (target_dir / f"{typ_file.parent.name}.pdf", {"show-answers": "false"}),
+            (target_dir / f"{typ_file.parent.name}-solutions.pdf", {"show-answers": "true"}),
         ]
 
         for out_path, inputs in versions:
-            success = run_typst(typ_file, out_path, inputs=inputs)
-            results.append(success)
+            results.append(run_typst(typ_file, out_path, inputs=inputs))
     return results
 
 
-def compile_standalone_docs() -> List[bool]:
-    """Handles root .typ files. Returns a list of success booleans."""
+def compile_programmation_docs() -> List[bool]:
     results = []
-    root_files: List[Path] = get_typ_files(REPO_ROOT, recursive=False)
-
-    for typ_file in root_files:
+    for typ_file in get_typ_files(PROGRAMMATION_DIR, recursive=False):
         output_path: Path = OUTPUT_DIR / f"{typ_file.stem}.pdf"
-        success = run_typst(typ_file, output_path)
-        results.append(success)
+        results.append(run_typst(typ_file, output_path))
+    return results
+
+
+def compile_donnees() -> List[bool]:
+    results = []
+    for typ_file in get_typ_files(DONNEES_DIR, recursive=True):
+        versions = [
+            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}.pdf", {"show-answers": "false"}),
+            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}-solutions.pdf", {"show-answers": "true"}),
+        ]
+        for out_path, inputs in versions:
+            results.append(run_typst(typ_file, out_path, inputs=inputs))
     return results
 
 
@@ -99,16 +94,15 @@ if __name__ == "__main__":
     print("🚀 Starting build...")
     OUTPUT_DIR.mkdir(exist_ok=True)
 
-    # Collect all results into one list
     all_results = []
     all_results.extend(compile_exercises())
-    all_results.extend(compile_standalone_docs())
+    all_results.extend(compile_programmation_docs())
+    all_results.extend(compile_donnees())
 
-    # Check if any False exists in our result list
     if all(all_results):
         print("\n✨ Build complete. All files compiled successfully.")
         sys.exit(0)
     else:
         failed_count = all_results.count(False)
         print(f"\n⚠️  Build finished with {failed_count} error(s).")
-        sys.exit(1)  # Exit with error code for CI/CD or shell scripts
+        sys.exit(1)

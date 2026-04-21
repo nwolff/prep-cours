@@ -26,7 +26,9 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: output/**/*.pdf
+          files: |
+            output/**/*.pdf
+            donnees/**/*.sqlite
           tag_name: build-${{ github.run_number }}
           name: "Build ${{ github.run_number }}"
           body: |

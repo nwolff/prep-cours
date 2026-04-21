@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1075" height="594" viewBox="0 0 1075 594">
+  <ns0:defs>
+    <ns0:marker id="dot-teal" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+      <ns0:circle cx="5" cy="5" r="4" fill="#3D8FA0" stroke="#3D8FA0" stroke-width="1.5" />
+    </ns0:marker>
+    <ns0:marker id="dot-white" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+      <ns0:circle cx="5" cy="5" r="4" fill="white" stroke="#3D8FA0" stroke-width="1.5" />
+    </ns0:marker>
+  </ns0:defs>
+  <ns0:path d="M 295 177 C 480 177, 650 339, 700 339" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:path d="M 350 155 C 320 155, 320 89, 295 89" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:path d="M 615 177 C 660 177, 660 89, 700 89" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:path d="M 965 533 C 995 533, 995 339, 965 339" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:path d="M 295 389 C 480 389, 520 489, 700 489" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:path d="M 295 411 C 325 411, 325 89, 350 89" stroke="#3D8FA0" stroke-width="1.5" fill="none" marker-start="url(#dot-white)" marker-end="url(#dot-teal)" />
+  <ns0:rect x="33" y="53" width="265" height="138" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="30" y="50" width="265" height="138" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="30" y="50" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="30" y="73" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="39" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="61" y="70" font-family="monospace" font-size="13" font-weight="bold" fill="white">artistes</ns0:text>
+  <ns0:rect x="31" y="78" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="30" y1="78" x2="295" y2="78" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="94" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="65" y="94" font-family="monospace" font-size="11" font-weight="bold" fill="#1A1A1A">id_artiste</ns0:text>
+  <ns0:text x="286" y="94" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="31" y="100" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="30" y1="100" x2="295" y2="100" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="116" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="65" y="116" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">nom_artiste</ns0:text>
+  <ns0:text x="286" y="116" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="31" y="122" width="263" height="22" fill="white" />
+  <ns0:line x1="30" y1="122" x2="295" y2="122" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="138" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="65" y="138" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">prenom_artiste</ns0:text>
+  <ns0:text x="286" y="138" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="31" y="144" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="30" y1="144" x2="295" y2="144" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="160" font-family="monospace" font-size="9" fill="#AAAAAA">123</ns0:text>
+  <ns0:text x="65" y="160" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">annee_naissance</ns0:text>
+  <ns0:text x="286" y="160" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="31" y="166" width="263" height="22" fill="white" />
+  <ns0:line x1="30" y1="166" x2="295" y2="166" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="182" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="65" y="182" font-family="monospace" font-size="11" font-weight="normal" fill="#1A5276">un_pays</ns0:text>
+  <ns0:text x="286" y="182" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:line x1="30" y1="188" x2="295" y2="188" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="353" y="53" width="265" height="138" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="350" y="50" width="265" height="138" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="350" y="50" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="350" y="73" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="359" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="381" y="70" font-family="monospace" font-size="13" font-weight="bold" fill="white">albums</ns0:text>
+  <ns0:rect x="351" y="78" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="350" y1="78" x2="615" y2="78" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="359" y="94" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="385" y="94" font-family="monospace" font-size="11" font-weight="bold" fill="#1A1A1A">id_album</ns0:text>
+  <ns0:text x="606" y="94" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="351" y="100" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="350" y1="100" x2="615" y2="100" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="359" y="116" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="385" y="116" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">titre_album</ns0:text>
+  <ns0:text x="606" y="116" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="351" y="122" width="263" height="22" fill="white" />
+  <ns0:line x1="350" y1="122" x2="615" y2="122" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="359" y="138" font-family="monospace" font-size="9" fill="#AAAAAA">123</ns0:text>
+  <ns0:text x="385" y="138" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">annee_album</ns0:text>
+  <ns0:text x="606" y="138" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="351" y="144" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="350" y1="144" x2="615" y2="144" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="359" y="160" font-family="monospace" font-size="9" fill="#AAAAAA">123</ns0:text>
+  <ns0:text x="385" y="160" font-family="monospace" font-size="11" font-weight="normal" fill="#1A5276">un_artiste</ns0:text>
+  <ns0:text x="606" y="160" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="351" y="166" width="263" height="22" fill="white" />
+  <ns0:line x1="350" y1="166" x2="615" y2="166" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="359" y="182" font-family="monospace" font-size="9" fill="#AAAAAA">123</ns0:text>
+  <ns0:text x="385" y="182" font-family="monospace" font-size="11" font-weight="normal" fill="#1A5276">un_style</ns0:text>
+  <ns0:text x="606" y="182" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:line x1="350" y1="188" x2="615" y2="188" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="703" y="53" width="265" height="94" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="700" y="50" width="265" height="94" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="700" y="50" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="700" y="73" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="709" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="731" y="70" font-family="monospace" font-size="13" font-weight="bold" fill="white">styles</ns0:text>
+  <ns0:rect x="701" y="78" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="700" y1="78" x2="965" y2="78" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="94" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="735" y="94" font-family="monospace" font-size="11" font-weight="bold" fill="#1A1A1A">id_style</ns0:text>
+  <ns0:text x="956" y="94" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="701" y="100" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="700" y1="100" x2="965" y2="100" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="116" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="116" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">nom_style</ns0:text>
+  <ns0:text x="956" y="116" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="701" y="122" width="263" height="22" fill="white" />
+  <ns0:line x1="700" y1="122" x2="965" y2="122" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="138" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="138" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">description_style</ns0:text>
+  <ns0:text x="956" y="138" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:line x1="700" y1="144" x2="965" y2="144" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="703" y="303" width="265" height="94" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="700" y="300" width="265" height="94" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="700" y="300" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="700" y="323" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="709" y="320" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="731" y="320" font-family="monospace" font-size="13" font-weight="bold" fill="white">pays</ns0:text>
+  <ns0:rect x="701" y="328" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="700" y1="328" x2="965" y2="328" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="344" font-family="monospace" font-size="9" fill="#3D8FA0">A-Z</ns0:text>
+  <ns0:text x="735" y="344" font-family="monospace" font-size="11" font-weight="bold" fill="#1A1A1A">id_pays</ns0:text>
+  <ns0:text x="956" y="344" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="701" y="350" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="700" y1="350" x2="965" y2="350" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="366" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="366" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">nom_pays</ns0:text>
+  <ns0:text x="956" y="366" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="701" y="372" width="263" height="22" fill="white" />
+  <ns0:line x1="700" y1="372" x2="965" y2="372" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="388" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="388" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">langue</ns0:text>
+  <ns0:text x="956" y="388" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:line x1="700" y1="394" x2="965" y2="394" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="33" y="353" width="265" height="94" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="30" y="350" width="265" height="94" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="30" y="350" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="30" y="373" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="39" y="370" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="61" y="370" font-family="monospace" font-size="13" font-weight="bold" fill="white">notes</ns0:text>
+  <ns0:rect x="31" y="378" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="30" y1="378" x2="295" y2="378" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="394" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="65" y="394" font-family="monospace" font-size="11" font-weight="bold" fill="#1A5276">un_utilisateur</ns0:text>
+  <ns0:text x="286" y="394" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="31" y="400" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="30" y1="400" x2="295" y2="400" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="416" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="65" y="416" font-family="monospace" font-size="11" font-weight="bold" fill="#1A5276">un_album</ns0:text>
+  <ns0:text x="286" y="416" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="31" y="422" width="263" height="22" fill="white" />
+  <ns0:line x1="30" y1="422" x2="295" y2="422" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="39" y="438" font-family="monospace" font-size="9" fill="#AAAAAA">123</ns0:text>
+  <ns0:text x="65" y="438" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">note</ns0:text>
+  <ns0:text x="286" y="438" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:line x1="30" y1="444" x2="295" y2="444" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="703" y="453" width="265" height="94" rx="4" fill="#CCCCCC" opacity="0.5" />
+  <ns0:rect x="700" y="450" width="265" height="94" rx="4" fill="white" stroke="#AACFDA" stroke-width="1" />
+  <ns0:rect x="700" y="450" width="265" height="28" rx="4" fill="#5BAFC1" />
+  <ns0:rect x="700" y="473" width="265" height="5" fill="#5BAFC1" />
+  <ns0:text x="709" y="470" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.7)">⊞ </ns0:text>
+  <ns0:text x="731" y="470" font-family="monospace" font-size="13" font-weight="bold" fill="white">utilisateurs</ns0:text>
+  <ns0:rect x="701" y="478" width="263" height="22" fill="#EBF6F9" />
+  <ns0:line x1="700" y1="478" x2="965" y2="478" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="494" font-family="monospace" font-size="9" fill="#3D8FA0">123</ns0:text>
+  <ns0:text x="735" y="494" font-family="monospace" font-size="11" font-weight="bold" fill="#1A1A1A">id_utilisateur</ns0:text>
+  <ns0:text x="956" y="494" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">INTEGER</ns0:text>
+  <ns0:rect x="701" y="500" width="263" height="22" fill="#F7F7F7" />
+  <ns0:line x1="700" y1="500" x2="965" y2="500" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="516" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="516" font-family="monospace" font-size="11" font-weight="normal" fill="#1A1A1A">pseudo</ns0:text>
+  <ns0:text x="956" y="516" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:rect x="701" y="522" width="263" height="22" fill="white" />
+  <ns0:line x1="700" y1="522" x2="965" y2="522" stroke="#AACFDA" stroke-width="0.5" />
+  <ns0:text x="709" y="538" font-family="monospace" font-size="9" fill="#AAAAAA">A-Z</ns0:text>
+  <ns0:text x="735" y="538" font-family="monospace" font-size="11" font-weight="normal" fill="#1A5276">un_pays</ns0:text>
+  <ns0:text x="956" y="538" font-family="monospace" font-size="10" fill="#888888" text-anchor="end">TEXT</ns0:text>
+  <ns0:line x1="700" y1="544" x2="965" y2="544" stroke="#AACFDA" stroke-width="1" />
+</ns0:svg>

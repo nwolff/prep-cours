@@ -1,4 +1,4 @@
-#import "/exercices/template.typ": *
+#import "/template-exercices.typ": *
 
 #show: series
 
