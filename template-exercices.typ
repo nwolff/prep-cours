@@ -1,6 +1,7 @@
-// Default to false for editing, but CLI can override with --input show-answers=true
+// Defaults can be overriden by CLI with for instance --input show-answers=true
 #let inputs = (
   show-answers: "false",
+  date: datetime.today().display("[year]-[month]-[day]"),
   ..sys.inputs,
 )
 
@@ -33,7 +34,7 @@
         [],
         [#current/#last],
         if current == last {
-          datetime.today().display("[year]-[month]-[day]")
+          inputs.date
         },
       )
     },

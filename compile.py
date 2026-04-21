@@ -14,6 +14,21 @@ FONT_DIR: Path = REPO_ROOT / "fonts"
 TEMPLATE_NAME: str = "template-exercices.typ"
 
 
+def get_source_date(typ_file: Path) -> Optional[str]:
+    # Returns the date of the most recent commit touching any file in the same
+    # directory as typ_file (covers the .typ source and co-located images).
+    # Returns None if the directory has never been committed; the template then
+    # falls back to its own default (today's date).
+    result = subprocess.run(
+        ["git", "log", "--format=%as", "-1", "--", str(typ_file.parent)],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    date_str = result.stdout.strip()
+    return date_str if date_str else None
+
+
 def get_typ_files(directory: Path, recursive: bool = False) -> List[Path]:
     pattern: str = "**/*.typ" if recursive else "*.typ"
     return [
@@ -60,9 +75,11 @@ def compile_exercises() -> List[bool]:
     typ_files: List[Path] = get_typ_files(EXERCISES_DIR, recursive=True)
 
     for typ_file in typ_files:
+        source_date = get_source_date(typ_file)
+        extra = {"date": source_date} if source_date else {}
         versions = [
-            (target_dir / f"{typ_file.parent.name}.pdf", {"show-answers": "false"}),
-            (target_dir / f"{typ_file.parent.name}-solutions.pdf", {"show-answers": "true"}),
+            (target_dir / f"{typ_file.parent.name}.pdf", {"show-answers": "false", **extra}),
+            (target_dir / f"{typ_file.parent.name}-solutions.pdf", {"show-answers": "true", **extra}),
         ]
 
         for out_path, inputs in versions:
@@ -74,16 +91,19 @@ def compile_programmation_docs() -> List[bool]:
     results = []
     for typ_file in get_typ_files(PROGRAMMATION_DIR, recursive=False):
         output_path: Path = OUTPUT_DIR / f"{typ_file.stem}.pdf"
-        results.append(run_typst(typ_file, output_path))
+        source_date = get_source_date(typ_file)
+        results.append(run_typst(typ_file, output_path, inputs={"date": source_date} if source_date else None))
     return results
 
 
 def compile_donnees() -> List[bool]:
     results = []
     for typ_file in get_typ_files(DONNEES_DIR, recursive=True):
+        source_date = get_source_date(typ_file)
+        extra = {"date": source_date} if source_date else {}
         versions = [
-            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}.pdf", {"show-answers": "false"}),
-            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}-solutions.pdf", {"show-answers": "true"}),
+            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}.pdf", {"show-answers": "false", **extra}),
+            (OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}-solutions.pdf", {"show-answers": "true", **extra}),
         ]
         for out_path, inputs in versions:
             results.append(run_typst(typ_file, out_path, inputs=inputs))
