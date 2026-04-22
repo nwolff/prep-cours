@@ -8,13 +8,8 @@
 
 La base de données _musique.sqlite_ contient des informations sur des artistes, leurs albums et des notes données par des utilisateurs.
 
-#v(-1em)
 
 #image("schema.svg", width: 100%)
-
-#v(-1em)
-
-Les colonnes préfixées `un_` sont des clés étrangères : elles font référence à la clé primaire de la table correspondante.
 
 #ex("Langues")[
   Afficher les langues des pays présents dans la base, sans doublons, par ordre alphabétique.
@@ -32,8 +27,8 @@ Les colonnes préfixées `un_` sont des clés étrangères : elles font référe
   #an[```sql
   select titre_album, nom_style, prenom_artiste
   from albums
-  join styles on un_style = id_style
-  join artistes on un_artiste = id_artiste;
+  join styles on le_style = id_style
+  join artistes on l_artiste = id_artiste;
   ```]
 ]
 
@@ -43,7 +38,7 @@ Les colonnes préfixées `un_` sont des clés étrangères : elles font référe
   #an[```sql
   select nom_style, count(*)
   from styles
-  join albums on id_style = un_style
+  join albums on id_style = le_style
   group by id_style
   order by count(*) desc;
   ```]
@@ -73,15 +68,3 @@ Les colonnes préfixées `un_` sont des clés étrangères : elles font référe
   having count(*) >= 50;
   ```]
 ]
-
-== Rendu
-
-Vous rendez un fichier `.sql` contenant toutes les requêtes. Le SQL correspondant à chaque exercice est précédé d'un commentaire :
-
-```sql
--- Exercice 1
-SELECT ...
-
--- Exercice 2
-SELECT ...
-```
