@@ -15,9 +15,9 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   Afficher les langues des pays présents dans la base, sans doublons, par ordre alphabétique.
 
   #an[```sql
-  select distinct langue
-  from pays
-  order by langue;
+  SELECT DISTINCT langue
+  FROM pays
+  ORDER BY langue
   ```]
 ]
 
@@ -25,10 +25,10 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   Afficher tous les albums avec deux colonnes supplémentaires : le nom du style musical et le prénom de l'artiste.
 
   #an[```sql
-  select titre_album, nom_style, prenom_artiste
-  from albums
-  join styles on le_style = id_style
-  join artistes on l_artiste = id_artiste;
+  SELECT titre_album, nom_style, prenom_artiste
+  FROM albums
+  JOIN styles ON le_style = id_style
+  JOIN artistes ON l_artiste = id_artiste
   ```]
 ]
 
@@ -36,11 +36,11 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   Afficher le nom de chaque style musical avec le nombre d'albums dans ce style. Les styles avec le plus d'albums doivent apparaître en premier.
 
   #an[```sql
-  select nom_style, count(*)
-  from styles
-  join albums on id_style = le_style
-  group by id_style
-  order by count(*) desc;
+  SELECT nom_style, COUNT(*)
+  FROM styles
+  JOIN albums ON id_style = le_style
+  GROUP BY id_style
+  ORDER BY COUNT(*) DESC
   ```]
 ]
 
@@ -48,10 +48,10 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   Afficher pour chaque album : le titre, le minimum, le maximum et la moyenne des notes obtenues.
 
   #an[```sql
-  select titre_album, min(note), max(note), avg(note)
-  from albums
-  join notes on id_album = un_album
-  group by id_album;
+  SELECT titre_album, MIN(note), MAX(note), AVG(note)
+  FROM albums
+  JOIN notes ON id_album = un_album
+  GROUP BY id_album
   ```]
 ]
 
@@ -61,10 +61,10 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   _Indice : il faut trouver 139 rangées._
 
   #an[```sql
-  select pseudo, count(*)
-  from utilisateurs
-  join notes on id_utilisateur = un_utilisateur
-  group by id_utilisateur
-  having count(*) >= 50;
+  SELECT pseudo, COUNT(*)
+  FROM utilisateurs
+  JOIN notes ON id_utilisateur = un_utilisateur
+  GROUP BY id_utilisateur
+  HAVING COUNT(*) >= 50
   ```]
 ]
