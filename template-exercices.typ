@@ -1,4 +1,4 @@
-// Defaults can be overriden by CLI with for instance --input show-answers=true
+// Defaults can be overridden by CLI with for instance --input show-answers=true
 #let inputs = (
   show-answers: "false",
   date: datetime.today().display("[year]-[month]-[day]"),
@@ -104,7 +104,6 @@
     }
   }
 
-
   // The first page header
   if show-answers {
     place(top, dy: -1cm)[
@@ -120,7 +119,7 @@
     ]
   }
   body
-}
+} // End series
 
 #let ex_counter = counter("exercise")
 
