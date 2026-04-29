@@ -2,7 +2,7 @@
 
 #show: series
 
-#title[ Série d'exercices : Conditions - Branchements]
+#title[ Exercices python : Conditions - Branchements]
 
 #ex("Vérifier un nombre positif")[
   - Demander un nombre décimal à l’utilisateur.

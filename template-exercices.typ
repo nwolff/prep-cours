@@ -185,8 +185,23 @@
   }
 }
 
+// An answer that fills the rest of the line with dots
+#let al(body) = {
+  if show-answers {
+    h(1fr)
+    body
+  } else {
+    box(width: 1fr, repeat(dot-style))
+  }
+}
+
 #let an = a.with(blank: none)
 #let a1 = a.with(blank: 1)
 #let a2 = a.with(blank: 2)
 #let a3 = a.with(blank: 3)
 #let a4 = a.with(blank: 4)
+#let a5 = a.with(blank: 5)
+#let a6 = a.with(blank: 6)
+#let a7 = a.with(blank: 7)
+#let a8 = a.with(blank: 8)
+

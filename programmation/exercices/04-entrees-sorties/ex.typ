@@ -2,7 +2,7 @@
 
 #show: series
 
-#title[ Série d'exercices : Entrées - Sorties]
+#title[ Exercices python : Entrées - Sorties]
 
 #ex("Variables simples")[
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -166,6 +167,13 @@ def compile_donnees() -> List[bool]:
 if __name__ == "__main__":
     print("🚀 Starting build...")
     OUTPUT_DIR.mkdir(exist_ok=True)
+
+    # Clear stale outputs so the directory always reflects the current build exactly
+    for f in OUTPUT_DIR.iterdir():
+        if f.is_dir():
+            shutil.rmtree(f)
+        else:
+            f.unlink()
 
     all_results = []
     all_results.extend(compile_programmation_exercises())

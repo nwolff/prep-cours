@@ -2,7 +2,7 @@
 
 #show: series
 
-#title[ Série d'exercices : Types, Expressions ]
+#title[ Exercices python : Types - Expressions ]
 
 #ex("La calculatrice de l'esprit")[
   Sans utiliser d'ordinateur, prédire la valeur et le type Python des expressions suivantes :
@@ -40,7 +40,7 @@
 #ex("Analyse d'erreurs")[
   Corriger ces expressions , en utilisant si possible des conversions `float()`, `int()`, `str()`
 
-  - `10.5 + "2"` #a[`10.5 + int(2)`]
+  - `10.5 + "2"` #a[`10.5 + int("2")`]
   - `int("Vingt")` #a[`int("20")`]
   - `"Batman " + 8` #a[`"Batman " + str(8)`]
   - `1,5 * 2` #a[`1.5 * 2`]
