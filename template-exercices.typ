@@ -54,7 +54,7 @@
   )
 
   show title: set align(center)
-  show title: it => pad(y: 0.9em, it)
+  show title: it => pad(y: 0.6em, it)
 
   show heading.where(level: 2): it => [
     #v(0.3em)

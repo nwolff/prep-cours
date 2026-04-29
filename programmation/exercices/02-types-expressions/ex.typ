@@ -10,12 +10,12 @@
   #table(
     columns: (1fr, 1fr, 1fr),
     [*Expression*], [*Valeur prédite*], [*Type (int, float, str, bool)*],
-    [`2 + 3.0`], [ #an[`5.0`]], [ #an[`float`]],
-    [`14 // 4`], [ #an[`3`]], [ #an[`int`]],
-    [`14 % 4`], [ #an[`2`]], [ #an[`int`]],
-    [`"Tic" + "Tac"`], [ #an[`"TicTac"`]], [ #an[`str`]],
-    [`1.0 / 1.0`], [ #an[`1.0`]], [ #an[`float`]],
-    [`not (10 < 2)`], [ #an[`True`]], [ #an[`bool`]],
+    `2 + 3.0`, an[`5.0`], an[`float`],
+    `14 // 4`, an[`3`], an[`int`],
+    `14 % 4`, an[`2`], an[`int`],
+    `"Tic" + "Tac"`, an[`"TicTac"`], an[`str`],
+    `1.0 / 1.0`, an[`1.0`], an[`float`],
+    `not (10 < 2)`, an[`True`], an[`bool`],
   )
 ]
 
@@ -31,19 +31,26 @@
 #ex("Gestion de stock")[
   Un marchand d'œufs dispose de 50 œufs. Il les range dans des boîtes de 6.
 
-  - Quelle expression calcule le nombre de boîtes totalement remplies ? #a[`50 // 6`]
-  - Quelle expression calcule combien d'œufs il reste après avoir rempli ces boîtes ? #a[`50 % 6`]
-  - Écrire une expression de comparaison qui vérifie si le marchand a assez d'œufs pour remplir au moins une boîte #a[`n >= 6`]
+  - Quelle expression calcule le nombre de boîtes totalement remplies ? #a1[`50 // 6`]
+  - Quelle expression calcule combien d'œufs il reste après avoir rempli ces boîtes ? #a1[`50 % 6`]
+  - Écrire une expression de comparaison qui vérifie si le marchand a assez d'œufs pour remplir au moins une boîte #a1[`n >= 6`]
 ]
 
 
 #ex("Analyse d'erreurs")[
-  Corriger ces expressions , en utilisant si possible des conversions `float()`, `int()`, `str()`
+  Corriger ces expressions en utilisant si possible des conversions `float()`, `int()`, `str()`.
 
-  - `10.5 + "2"` #a[`10.5 + int("2")`]
-  - `int("Vingt")` #a[`int("20")`]
-  - `"Batman " + 8` #a[`"Batman " + str(8)`]
-  - `1,5 * 2` #a[`1.5 * 2`]
+  Puis évaluez l'expression corrigée.
+
+
+  #table(
+    columns: (1fr, 1fr, 1fr),
+    [*Expression*], [*Expression corrigée*], [*Valeur*],
+    `10.5 + "2"`, an[`10.5 + int("2")`], an[`12.5`],
+    `int("Vingt")`, an[`int("20")`], an[`20`],
+    `"Batman " + 8`, an[`"Batman " + str(8)`], an[`"Batman 8"`],
+    `1,5 * 2`, an[`1.5 * 2`], an[`3.0`],
+  )
 ]
 
 #ex("Circuit logique")[
@@ -82,6 +89,11 @@
   - `"Zèbre" < "Abeille"` #a[`False`]
   - `"Chien" > "Chat"` #a[`True`]
   - `"A" == "a"` #a[`False`]
+
+  #an[
+    - L'ordre pour comparer des mots est l'ordre alphabétique (un mot qui apparaît après un autre dans un dictionnaire et "plus grand" que l'autre)
+    - On distingue les majuscules des minuscules
+  ]
 ]
 
 #ex("Le système de sécurité")[
