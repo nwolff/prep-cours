@@ -18,4 +18,4 @@ For code I downloaded "Hack" from https://github.com/source-foundry/Hack
 
 To make tinymist use these fonts add this to the config:
 
-        "tinymist.fontPaths": [ "${workspaceFolder}/fonts" ]
+        "tinymist.fontPaths": [ "${workspaceFolder}/_fonts" ]

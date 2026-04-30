@@ -1,11 +1,11 @@
+# Some files we don't ever want in the repo
+local/
+output/
+*.pdf
+
 # Mac
 .DS_Store
 
 # IDEs
 .idea/
 .vscode/
-
-
-# Github should build these, ignore any file we accidentally create on the development machine
-*.pdf
-

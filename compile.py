@@ -6,13 +6,14 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
-REPO_ROOT: Path = Path(__file__).parent.resolve()
-PROGRAMMATION_DIR: Path = REPO_ROOT / "programmation"
-PROGRAMMATION_EXERCISES_DIR: Path = PROGRAMMATION_DIR / "exercices"
-DONNEES_DIR: Path = REPO_ROOT / "donnees"
-OUTPUT_DIR: Path = REPO_ROOT / "output"
-FONT_DIR: Path = REPO_ROOT / "fonts"
-TEMPLATE_NAME: str = "template-exercices.typ"
+REPO_ROOT = Path(__file__).parent.resolve()
+PROGRAMMATION_DIR = REPO_ROOT / "programmation"
+PROGRAMMATION_EXERCISES_DIR = PROGRAMMATION_DIR / "exercices"
+DONNEES_DIR = REPO_ROOT / "donnees"
+ALGO_DIR = REPO_ROOT / "algo"
+OUTPUT_DIR = REPO_ROOT / "output"
+FONT_DIR = REPO_ROOT / "_fonts"
+TEMPLATE_NAME = "template-exercices.typ"
 
 
 def get_source_date(typ_file: Path) -> Optional[str]:
@@ -49,16 +50,19 @@ def run_typst(
         "compile",
         "--root",
         str(REPO_ROOT),
+        "--font-path",
+        str(FONT_DIR),
     ]
 
     if inputs:
         for key, value in inputs.items():
             cmd.extend(["--input", f"{key}={value}"])
 
-    cmd.extend(["--font-path", str(FONT_DIR)])
     cmd.extend([str(input_path), str(output_path)])
 
-    print(f"🔨 Compiling: {input_path.name} -> {output_path.relative_to(REPO_ROOT)}")
+    print(
+        f"🔨 Compiling: {input_path.relative_to(REPO_ROOT)} -> {output_path.relative_to(REPO_ROOT)}"
+    )
 
     result = subprocess.run(cmd)
 
@@ -68,6 +72,26 @@ def run_typst(
     else:
         print(f"❌ Failed: {input_path.name}")
         return False
+
+
+def compile_algo() -> List[bool]:
+    results = []
+    for typ_file in get_typ_files(ALGO_DIR, recursive=True):
+        source_date = get_source_date(typ_file)
+        extra = {"date": source_date} if source_date else {}
+        versions = [
+            (
+                OUTPUT_DIR / "algo" / f"algo-{typ_file.parent.name}.pdf",
+                {"show-answers": "false", **extra},
+            ),
+            (
+                OUTPUT_DIR / "algo" / f"algo-{typ_file.parent.name}-solution.pdf",
+                {"show-answers": "true", **extra},
+            ),
+        ]
+        for out_path, inputs in versions:
+            results.append(run_typst(typ_file, out_path, inputs=inputs))
+    return results
 
 
 def compile_programmation_exercises() -> List[bool]:
@@ -139,26 +163,27 @@ def compile_donnees() -> List[bool]:
         source_date = get_source_date(typ_file)
         extra = {"date": source_date} if source_date else {}
         is_cours = typ_file.stem.startswith("cours-")
-        versions = [
-            (
-                OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}.pdf",
-                {"show-answers": "false", **extra},
-            ),
-        ]
-        if typ_file.stem == "cours-sql-selection":
-            versions.append(
+        if is_cours:
+            versions = [
                 (
                     OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}_base.pdf",
                     {"tags": SQL_SELECTION_BASE_TAGS, **extra},
                 )
-            )
-        if not is_cours:
-            versions.append(
+            ]
+        else:
+            versions = [
                 (
-                    OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}-solutions.pdf",
+                    OUTPUT_DIR / "donnees" / f"donnees-{typ_file.parent.name}.pdf",
+                    {"show-answers": "false", **extra},
+                ),
+                (
+                    OUTPUT_DIR
+                    / "donnees"
+                    / f"donnees-{typ_file.parent.name}-solution.pdf",
                     {"show-answers": "true", **extra},
-                )
-            )
+                ),
+            ]
+
         for out_path, inputs in versions:
             results.append(run_typst(typ_file, out_path, inputs=inputs))
     return results
@@ -176,6 +201,7 @@ if __name__ == "__main__":
             f.unlink()
 
     all_results = []
+    all_results.extend(compile_algo())
     all_results.extend(compile_programmation_exercises())
     all_results.extend(compile_programmation_docs())
     all_results.extend(compile_donnees())

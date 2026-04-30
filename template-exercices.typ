@@ -56,6 +56,13 @@
   show title: set align(center)
   show title: it => pad(y: 0.6em, it)
 
+  show heading.where(level: 1): it => [
+    #v(0.2em)
+    #block(below: 0.8em, sticky: true)[
+      #it
+    ]
+  ]
+
   show heading.where(level: 2): it => [
     #v(0.3em)
     #block(below: 1em, sticky: true, breakable: false)[
