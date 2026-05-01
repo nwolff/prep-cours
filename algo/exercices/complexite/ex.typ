@@ -15,8 +15,8 @@
     align: (left, right, right, right),
     [*programme*], [*Op par ligne*], [*Nb fois ligne*], [*Sous-total*],
     `somme = 0`, [#an[1]], [#an[1]], [#an[1]],
-    `for i in range(n+1):`, [#an[2]], [#an[1]], [#an[2]],
-    `    somme = somme + i`, [#an[2]], [#an[$n + 1$]], [#an[$2n + 2$]],
+    `for i in range(n):`, [#an[2]], [#an[1]], [#an[2]],
+    `    somme = somme + (i + 1)`, [#an[3]], [#an[$n$]], [#an[$3n + 3$]],
     `print(somme)`, [#an[1]], [#an[1]], [#an[1]],
   )
 
