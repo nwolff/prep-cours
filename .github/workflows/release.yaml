@@ -25,17 +25,21 @@ jobs:
       - name: Build PDFs
         run: python compile.py
 
-      - name: Create GitHub Release
+      - name: Update Latest Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             output/**/*.pdf
             donnees/**/*.sqlite
-          tag_name: build-${{ github.run_number }}
-          name: "Build ${{ github.run_number }}"
+          tag_name: latest
+          name: "Latest"
           body: |
-            Automated PDF export from commit: ${{ github.sha }}
-            Generated on: ${{ github.event.head_commit.timestamp }}
-          generate_release_notes: true
+            ### Rolling Release
+            This release is automatically updated on every successful build.
+
+            **Last Update:** ${{ github.event.head_commit.timestamp }}
+            **Commit:** ${{ github.sha }}
+          generate_release_notes: false
           draft: false
           prerelease: false
+          make_latest: true # Ensures the "Latest" badge stays here
