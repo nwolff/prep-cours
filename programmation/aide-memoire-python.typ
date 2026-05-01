@@ -73,11 +73,11 @@
   [
     = Types de données simples
     == Nombres (int, float)
-    / exemples: `1` `3.2` `1/3`
+    / exemples: `1` `3.2` `-1/3`
     / opérations de base: `+` `-` `*` `/`
     / puissance: `**`
     / parenthèses contrôlent l'ordre des opérations: `(1+2)*3`
-    / reste et quotient de division euclidienne: `%` `//`
+    / division entière et reste: `//` `%`
     / arrondi et troncature: `round` `int`
     / fonctions math basiques: `max` `min` `abs`
 
