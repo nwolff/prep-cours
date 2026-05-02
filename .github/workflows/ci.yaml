@@ -8,6 +8,9 @@ on:
     branches:
       - "main" # ensures CI runs when someone targets a PR at main
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -7,10 +7,15 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 REPO_ROOT = Path(__file__).parent.resolve()
+
+ALGO_DIR = REPO_ROOT / "algo"
+ALGO_EXERCISES_DIR = ALGO_DIR / "exercices"
+
 PROGRAMMATION_DIR = REPO_ROOT / "programmation"
 PROGRAMMATION_EXERCISES_DIR = PROGRAMMATION_DIR / "exercices"
+
 DONNEES_DIR = REPO_ROOT / "donnees"
-ALGO_DIR = REPO_ROOT / "algo"
+
 OUTPUT_DIR = REPO_ROOT / "output"
 FONT_DIR = REPO_ROOT / "_fonts"
 TEMPLATE_NAME = "template-exercices.typ"
@@ -74,9 +79,9 @@ def run_typst(
         return False
 
 
-def compile_algo() -> List[bool]:
+def compile_algo_exercises() -> List[bool]:
     results = []
-    for typ_file in get_typ_files(ALGO_DIR, recursive=True):
+    for typ_file in get_typ_files(ALGO_EXERCISES_DIR, recursive=True):
         source_date = get_source_date(typ_file)
         extra = {"date": source_date} if source_date else {}
         versions = [
@@ -201,7 +206,7 @@ if __name__ == "__main__":
             f.unlink()
 
     all_results = []
-    all_results.extend(compile_algo())
+    all_results.extend(compile_algo_exercises())
     all_results.extend(compile_programmation_exercises())
     all_results.extend(compile_programmation_docs())
     all_results.extend(compile_donnees())
