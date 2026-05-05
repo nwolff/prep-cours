@@ -1,6 +1,6 @@
 # Some files we don't ever want in the repo
 local/
-output/
+.output/
 *.pdf
 
 # Mac

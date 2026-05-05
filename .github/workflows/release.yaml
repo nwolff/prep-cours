@@ -28,11 +28,13 @@ jobs:
       - name: Build PDFs
         run: python compile.py
 
+      # This action only adds assets — it never removes existing ones.
+      # If a file is renamed or deleted, the old asset stays in the release until manually removed.
       - name: Update Latest Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            output/**/*.pdf
+            .output/**/*.pdf
             donnees/**/*.sqlite
           tag_name: latest
           name: "Latest"

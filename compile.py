@@ -3,29 +3,26 @@
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from pathlib import Path
 from typing import Dict, List, Optional
 
 REPO_ROOT = Path(__file__).parent.resolve()
 
-ALGO_DIR = REPO_ROOT / "algo"
-ALGO_EXERCISES_DIR = ALGO_DIR / "exercices"
-
-PROGRAMMATION_DIR = REPO_ROOT / "programmation"
-PROGRAMMATION_EXERCISES_DIR = PROGRAMMATION_DIR / "exercices"
+PROG_DIR = REPO_ROOT / "prog"
 
 DONNEES_DIR = REPO_ROOT / "donnees"
 
-OUTPUT_DIR = REPO_ROOT / "output"
+OUTPUT_DIR = REPO_ROOT / ".output"
 FONT_DIR = REPO_ROOT / "_fonts"
 TEMPLATE_NAME = "template-exercices.typ"
 
+Job = Callable[[], bool]
+
 
 def get_source_date(typ_file: Path) -> Optional[str]:
-    # Returns the date of the most recent commit touching any file in the same
-    # directory as typ_file (covers the .typ source and co-located images).
-    # Returns None if the directory has never been committed; the template then
-    # falls back to its own default (today's date).
     result = subprocess.run(
         ["git", "log", "--format=%as", "-1", "--", str(typ_file.parent)],
         cwd=REPO_ROOT,
@@ -65,77 +62,54 @@ def run_typst(
 
     cmd.extend([str(input_path), str(output_path)])
 
-    print(
-        f"🔨 Compiling: {input_path.relative_to(REPO_ROOT)} -> {output_path.relative_to(REPO_ROOT)}"
-    )
+    result = subprocess.run(cmd, capture_output=True, text=True)
 
-    result = subprocess.run(cmd)
-
+    rel_out = output_path.relative_to(REPO_ROOT)
     if result.returncode == 0:
-        print(f"✅ Success")
+        print(f"✓ {rel_out}")
         return True
     else:
-        print(f"❌ Failed: {input_path.name}")
+        print(f"✗ {rel_out}\n{result.stderr.strip()}", file=sys.stderr)
         return False
 
 
-def compile_algo_exercises() -> List[bool]:
-    results = []
-    for typ_file in get_typ_files(ALGO_EXERCISES_DIR, recursive=True):
+def compile_exercises(root: Path) -> List[Job]:
+    jobs = []
+    for exercises_dir in sorted(root.glob("*/exercices")):
+        category = exercises_dir.parent.name
+        target_dir: Path = OUTPUT_DIR / category / "exercices"
+        for typ_file in get_typ_files(exercises_dir, recursive=True):
+            source_date = get_source_date(typ_file)
+            extra = {"date": source_date} if source_date else {}
+            versions = [
+                (
+                    target_dir / f"{category}-{typ_file.parent.name}.pdf",
+                    {"show-answers": "false", **extra},
+                ),
+                (
+                    target_dir / f"{category}-{typ_file.parent.name}-solution.pdf",
+                    {"show-answers": "true", **extra},
+                ),
+            ]
+            for out_path, inputs in versions:
+                jobs.append(partial(run_typst, typ_file, out_path, inputs=inputs))
+    return jobs
+
+
+def compile_prog_docs() -> List[Job]:
+    jobs = []
+    for typ_file in get_typ_files(PROG_DIR, recursive=False):
+        output_path: Path = OUTPUT_DIR / "prog" / f"{typ_file.stem}.pdf"
         source_date = get_source_date(typ_file)
-        extra = {"date": source_date} if source_date else {}
-        versions = [
-            (
-                OUTPUT_DIR / "algo" / f"algo-{typ_file.parent.name}.pdf",
-                {"show-answers": "false", **extra},
-            ),
-            (
-                OUTPUT_DIR / "algo" / f"algo-{typ_file.parent.name}-solution.pdf",
-                {"show-answers": "true", **extra},
-            ),
-        ]
-        for out_path, inputs in versions:
-            results.append(run_typst(typ_file, out_path, inputs=inputs))
-    return results
-
-
-def compile_programmation_exercises() -> List[bool]:
-    results = []
-    target_dir: Path = OUTPUT_DIR / "exercices"
-    typ_files: List[Path] = get_typ_files(PROGRAMMATION_EXERCISES_DIR, recursive=True)
-
-    for typ_file in typ_files:
-        source_date = get_source_date(typ_file)
-        extra = {"date": source_date} if source_date else {}
-        versions = [
-            (
-                target_dir / f"{typ_file.parent.name}.pdf",
-                {"show-answers": "false", **extra},
-            ),
-            (
-                target_dir / f"{typ_file.parent.name}-solutions.pdf",
-                {"show-answers": "true", **extra},
-            ),
-        ]
-
-        for out_path, inputs in versions:
-            results.append(run_typst(typ_file, out_path, inputs=inputs))
-    return results
-
-
-def compile_programmation_docs() -> List[bool]:
-    results = []
-    for typ_file in get_typ_files(PROGRAMMATION_DIR, recursive=False):
-        output_path: Path = OUTPUT_DIR / f"{typ_file.stem}.pdf"
-        source_date = get_source_date(typ_file)
-        results.append(
-            run_typst(
+        jobs.append(
+            partial(
+                run_typst,
                 typ_file,
                 output_path,
                 inputs={"date": source_date} if source_date else None,
             )
         )
-    return results
+    return jobs
 
 
 SQL_SELECTION_BASE_TAGS = ",".join(
@@ -162,59 +136,47 @@ SQL_SELECTION_BASE_TAGS = ",".join(
 )
 
 
-def compile_donnees() -> List[bool]:
-    results = []
-    for typ_file in get_typ_files(DONNEES_DIR, recursive=True):
+def compile_donnees_docs() -> List[Job]:
+    jobs = []
+    for typ_file in get_typ_files(DONNEES_DIR / "cours", recursive=False):
         source_date = get_source_date(typ_file)
         extra = {"date": source_date} if source_date else {}
-        is_cours = typ_file.stem.startswith("cours-")
-        if is_cours:
-            versions = [
-                (
-                    OUTPUT_DIR / "donnees" / f"donnees-{typ_file.stem}_base.pdf",
-                    {"tags": SQL_SELECTION_BASE_TAGS, **extra},
-                )
-            ]
-        else:
-            versions = [
-                (
-                    OUTPUT_DIR / "donnees" / f"donnees-{typ_file.parent.name}.pdf",
-                    {"show-answers": "false", **extra},
-                ),
-                (
-                    OUTPUT_DIR
-                    / "donnees"
-                    / f"donnees-{typ_file.parent.name}-solution.pdf",
-                    {"show-answers": "true", **extra},
-                ),
-            ]
-
-        for out_path, inputs in versions:
-            results.append(run_typst(typ_file, out_path, inputs=inputs))
-    return results
+        out_path = OUTPUT_DIR / "donnees" / "cours" / f"{typ_file.stem}_base.pdf"
+        jobs.append(
+            partial(
+                run_typst,
+                typ_file,
+                out_path,
+                inputs={"tags": SQL_SELECTION_BASE_TAGS, **extra},
+            )
+        )
+    return jobs
 
 
 if __name__ == "__main__":
     print("🚀 Starting build...")
     OUTPUT_DIR.mkdir(exist_ok=True)
 
-    # Clear stale outputs so the directory always reflects the current build exactly
     for f in OUTPUT_DIR.iterdir():
         if f.is_dir():
             shutil.rmtree(f)
         else:
             f.unlink()
 
-    all_results = []
-    all_results.extend(compile_algo_exercises())
-    all_results.extend(compile_programmation_exercises())
-    all_results.extend(compile_programmation_docs())
-    all_results.extend(compile_donnees())
+    jobs: List[Job] = []
+    jobs.extend(compile_exercises(REPO_ROOT))
+    jobs.extend(compile_prog_docs())
+    jobs.extend(compile_donnees_docs())
 
-    if all(all_results):
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(job) for job in jobs]
+
+    results = [f.result() for f in futures]
+
+    if all(results):
         print("\n✨ Build complete. All files compiled successfully.")
         sys.exit(0)
     else:
-        failed_count = all_results.count(False)
+        failed_count = results.count(False)
         print(f"\n⚠️  Build finished with {failed_count} error(s).")
         sys.exit(1)

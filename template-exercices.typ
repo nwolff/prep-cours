@@ -16,11 +16,6 @@
   set page(
     paper: "a4",
     margin: (x: 2.5cm, y: 2cm),
-    fill: if show-answers {
-      rgb("#fff0e0")
-    } else {
-      white
-    },
 
     footer-descent: 30pt,
     footer: context {
@@ -54,7 +49,15 @@
   )
 
   show title: set align(center)
-  show title: it => pad(y: 0.6em, it)
+  show title: it => {
+    if show-answers {
+      block(fill: rgb("#fff0e0"), width: 100%, inset: (x: 0.5em, y: 0.3em))[
+        #pad(y: 0.6em)[#it.body - Solution]
+      ]
+    } else {
+      pad(y: 0.6em, it)
+    }
+  }
 
   show heading.where(level: 1): it => [
     #v(0.2em)
@@ -111,12 +114,8 @@
     }
   }
 
-  // The first page header
-  if show-answers {
-    place(top, dy: -1cm)[
-      Solutions
-    ]
-  } else {
+  // The first page header (student mode only)
+  if not show-answers {
     let dots = box(width: 1fr, repeat(dot-style), inset: (right: 1em))
     place(top, dy: -1cm)[
       #grid(
