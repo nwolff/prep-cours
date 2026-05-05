@@ -4,6 +4,7 @@
 
 #title[ Exercices python : Conditions - Branchements]
 
+// concept: if simple sans else, instruction après le bloc exécutée dans tous les cas
 #ex("Vérifier un nombre positif")[
   - Demander un nombre décimal à l’utilisateur.
   - Si le nombre est strictement positif, afficher : `Le nombre <nombre> est positif`.
@@ -19,6 +20,7 @@
   ]
 ]
 
+// concept: if/else, opérateur modulo pour tester la parité
 #ex("Pair ou impair")[
   - Demander un entier à l’utilisateur.
   - Si l’entier est pair, afficher : `Pair`. Sinon, afficher : `Impair.`
@@ -36,6 +38,7 @@
   ]
 ]
 
+// concept: if simple, comparer à la chaîne vide pour détecter une saisie vide
 #ex("Vérifier la saisie")[
   - Demander un mot ou une phrase à l’utilisateur.
   - Si l’utilisateur n’a rien tapé, afficher : `Tu n’as rien écrit`.
@@ -49,6 +52,7 @@
   ]
 ]
 
+// concept: if/else, instruction commune après le branchement
 #ex("Température")[
   - Demander une température en degrés Celsius (nombre décimal).
   - Afficher `Il gèle !` si la température est négative, sinon afficher : `Il ne gèle pas`.
@@ -66,6 +70,7 @@
   ]
 ]
 
+// concept: trois cas mutuellement exclusifs, if/else imbriqués (ou elif)
 #ex("Talk about the weather")[
   - Demande une température en degrés Celsius (nombre décimal).
   - Si la température est inférieure à 0, affiche : `Il gèle !`
@@ -88,6 +93,7 @@
   ]
 ]
 
+// concept: lire et implémenter un algorithme donné sous forme de diagramme, if/else imbriqués
 #ex("Pizza")[
   Programmer cet algorithme.
 

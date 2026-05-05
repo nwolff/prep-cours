@@ -4,6 +4,7 @@
 
 #title[ Série d'exercices : Itération - while]
 
+// concept: boucle while avec compteur et incrément, condition de fin
 #ex("Compter jusqu’à 10")[
   Écrire un programme qui affiche les nombres de 1 à 10 avec une boucle while.
 
@@ -17,6 +18,7 @@
   ]
 ]
 
+// concept: boucle while pilotée par une condition sur l'input, deux variantes (dont valeur sentinelle)
 #ex("Mot de passe")[
   - Demander à l’utilisateur de taper un mot de passe.
   - Tant que ce n’est pas `python`, redemander le mot de passe.
@@ -42,6 +44,7 @@
   ]
 ]
 
+// concept: boucle while avec compteur, nombre d'itérations fourni par l'utilisateur
 #ex("Répéter un mot")[
   - Demander à l’utilisateur un mot et un nombre.
   - Afficher le mot autant de fois que le nombre indiqué.
@@ -57,6 +60,7 @@
   ]
 ]
 
+// concept: boucle while avec incrément de 2, filtrer une séquence sans if
 #ex("Nombres pairs")[
   - Écrire un programme qui affiche uniquement les nombres pairs de 2 à 20.
 
@@ -70,6 +74,7 @@
   ]
 ]
 
+// concept: boucle while avec valeur initiale invalide pour forcer l'entrée dans la boucle
 #ex("Deviner un nombre")[
   - Choisir un nombre secret (par exemple 7).
   - Demander à l’utilisateur de deviner le nombre.
@@ -87,6 +92,7 @@
   ]
 ]
 
+// concept: combiner if/else et while, boucle conditionnelle à l'entrée
 #ex("Afficher des étoiles")[
   - Demander un nombre à l’utilisateur.
   - Si ce nombre est supérieur à 0, afficher autant d’étoiles `*` que ce nombre (une par ligne)

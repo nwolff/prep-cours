@@ -17,6 +17,7 @@ Le principe du tri par sélection est le suivant :
 
 À tout moment, la partie déjà parcourue est bien triée.
 
+// concept: appliquer le tri par sélection, tracer les états intermédiaires
 #ex("Trier une liste")[
   Trier la liste `[3, 6, 8, 1, 9, 7, 6, 0]` en utilisant le tri par sélection. \
   Représenter l'état de la liste après chaque étape.
@@ -33,6 +34,7 @@ Le principe du tri par sélection est le suivant :
   ]
 ]
 
+// concept: tri par sélection — invariance au cas : toujours O(n²) quelle que soit l'entrée
 #ex("Meilleur / Pire cas")[
   Le nombre d'étapes nécessaires pour trier la liste dépend de sa taille, mais dépend-il aussi de l'ordre initial des éléments ?
 
@@ -55,6 +57,7 @@ Le principe du tri par insertion est le suivant :
   - On _insère_ l'élément considéré juste à côté, en décalant tous les nombres plus grands d'une case vers la droite.
   - La partie de la liste déjà triée est maintenant plus grande de 1 élément.
 
+// concept: appliquer le tri par insertion, tracer les états intermédiaires
 #ex("Trier une liste")[
   Trier la liste `[6, 3, 8, 1, 9, 7, 5, 0]` en utilisant le tri par insertion. \
   Représenter l'état de la liste après chaque étape.
@@ -71,6 +74,7 @@ Le principe du tri par insertion est le suivant :
   ]
 ]
 
+// concept: tri par insertion — meilleur cas O(n) (déjà trié), pire cas O(n²) (ordre inverse)
 #ex("Meilleur / Pire cas")[
   Le nombre d'étapes nécessaires pour trier la liste dépend de sa taille, mais dépend-il aussi de l'ordre initial des éléments ?
 
@@ -81,6 +85,7 @@ Le principe du tri par insertion est le suivant :
   #a2[La liste triée en ordre décroissant : `[9, 8, 7, 6, 5, 3, 1, 0]`. Chaque nouvel élément doit être inséré au début de la partie déjà triée.]
 ]
 
+// concept: algorithme O(n) possible sous contrainte forte (entiers consécutifs), valeur = indice
 #ex("Tri immédiat")[
   Dans le cas particulier où les éléments de la liste sont des entiers consécutifs commençant à 0, sans doublons, il existe un algorithme de tri très rapide.
 
@@ -100,6 +105,7 @@ Le principe du tri par insertion est le suivant :
 
 = Rechercher dans des listes
 
+// concept: recherche linéaire, O(n) dans le pire cas
 #ex("Dans une liste non-triée")[
 
   `[47, 89, 204, 55, 215, 168, 127, 210, 62, 109, 73, 125, 218, 93, 40, 84, 184, 202, 165, 12, 141, 59, 82, 76, 196, 229, 95, 231, 5, 187]`
@@ -114,6 +120,7 @@ Le principe du tri par insertion est le suivant :
   #a1[N étapes pour une liste de taille N]
 ]
 
+// concept: recherche dichotomique (binaire), O(log n) — gain massif grâce au tri préalable
 #ex("Dans une liste triée")[
 
   `[5, 12, 40, 47, 55, 59, 62, 73, 76, 82, 84, 89, 93, 95, 109, 125, 127, 141, 165, 168, 184, 187, 196, 202, 204, 210, 215, 218, 229, 231]`

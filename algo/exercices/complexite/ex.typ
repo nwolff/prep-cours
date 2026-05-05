@@ -6,6 +6,7 @@
 
 
 
+// concept: annoter un programme ligne par ligne, compter opérations et exécutions, complexité O(n)
 #ex("Somme des n premiers nombres")[
 
   1) Annoter le programme pour compter combien de fois chaque ligne est exécutée.
@@ -32,6 +33,7 @@
 ]
 
 
+// concept: même annotation mais O(1) — contraster avec la version itérative pour montrer l'impact d'une formule fermée
 #ex("Somme des n premiers nombres – forme fermée")[
   Il y a une manière plus rapide de calculer la somme des $n$ premiers nombres,
   grâce à cette identité :
@@ -58,6 +60,7 @@
   #a1[$O(1)$]
 ]
 
+// concept: même annotation avec une variable x (exécutions dépendant des données), complexité O(n)
 #ex("Déterminer si un nombre est premier")[
   1) Annoter le programme pour compter combien de fois chaque ligne est exécutée
 
@@ -86,6 +89,7 @@
 
 
 
+// concept: boucles imbriquées → n² exécutions → complexité O(n²)
 #ex("Table de multiplication")[
   Le programme suivant affiche la table de multiplication de 1 à $n$.
 

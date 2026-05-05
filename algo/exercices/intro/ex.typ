@@ -5,6 +5,7 @@
 #title[Algorithmique -- Introduction]
 
 
+// concept: identifier les cas d'un algorithme (0, 1 ou 2 solutions selon le discriminant)
 #ex("Zéro(s) d'une fonction quadratique")[
   On a l'équation: $a x^2 + b x + c = 0$
 
@@ -22,6 +23,7 @@
 ]
 
 
+// concept: algorithme du maximum, notion d'état intermédiaire, complexité proportionnelle à la taille
 #ex("Plus grand nombre dans une liste")[
   On cherche le plus grand nombre de cette liste:
 
@@ -63,6 +65,7 @@
 ]
 
 
+// concept: décomposer un calcul en opérations élémentaires, notion d'accumulateur et de somme partielle
 #ex("Somme de nombres")[
   Calculer $6609 + 9449 + 3597 + 1345 + 1349 + 5898$ à l'aide de la calculatrice (la vraie, pas celle de l'ordi). Vous allez procéder par étapes, car la calculatrice ne fait  qu'*une opération à la fois*.
 
@@ -97,6 +100,7 @@
 ]
 
 
+// concept: exploration avec état local limité, stratégies (suivre un mur, backtracking), mémoire nécessaire
 #ex("Labyrinthe")[
   Trouver un chemin depuis l'entrée (en haut) vers la sortie (en bas).
   Vous vous mettez à la place d'une personne qui est dans le labyrinthe, et ne voit que son entourage direct.
@@ -126,6 +130,7 @@
 ]
 
 
+// concept: algorithme avec état et condition d'arrêt, borne sur la mémoire nécessaire
 #ex("Paires de chaussettes")[
   On a un énorme sac qui contient des chaussettes noires, blanches, et grises.
   On ne voit pas l'intérieur du sac, le sac distribue une chaussette à la fois.
@@ -155,6 +160,7 @@
 ]
 
 
+// concept: décomposer un problème en sous-étapes (conversion, soustraction, reconversion)
 #ex("Différences entre heures")[
   On veut calculer la différence entre deux moments de la journée. Le résultat doit être en heures et minutes.
 
@@ -170,6 +176,7 @@
 ]
 
 
+// concept: algorithme glouton (choix local optimal à chaque étape), condition d'arrêt
 #ex("Équipes de sport de force équivalente")[
   *a)* Décrivez en détails la méthode qu'utilisent les profs de sports pour créer deux équipes de foot de
   force équivalente, sans faire eux-mêmes le choix des membres des équipes (ils font seulement un petit
@@ -195,6 +202,7 @@
 ]
 
 
+// concept: stratégie vs algorithme gagnant, limites — certains problèmes n'ont pas de solution parfaite
 #ex("Jeu du morpion")[
   #grid(
     columns: (auto, 1fr),

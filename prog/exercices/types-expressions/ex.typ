@@ -4,6 +4,7 @@
 
 #title[ Exercices python : Types - Expressions ]
 
+// concept: prédire valeur et type d'expressions — //, %, +, division, not
 #ex("La calculatrice de l'esprit")[
   Sans utiliser d'ordinateur, prédire la valeur et le type Python des expressions suivantes :
 
@@ -19,6 +20,7 @@
   )
 ]
 
+// concept: choisir le bon type Python (str, float, int, bool) pour des données du monde réel
 #ex("Le profil du gamer")[
   On veut créer la fiche d'un joueur dans un jeu en ligne. Quel type Python choisir pour stocker ces informations ?
 
@@ -28,6 +30,7 @@
   - Le compte est-il activé ? (Oui/Non) #a[`bool`]
 ]
 
+// concept: appliquer // et % à un problème concret, écrire une expression de comparaison
 #ex("Gestion de stock")[
   Un marchand d'œufs dispose de 50 œufs. Il les range dans des boîtes de 6.
 
@@ -37,6 +40,7 @@
 ]
 
 
+// concept: identifier et corriger des erreurs de type avec float(), int(), str()
 #ex("Analyse d'erreurs")[
   Corriger ces expressions en utilisant si possible des conversions `float()`, `int()`, `str()`.
 
@@ -53,6 +57,7 @@
   )
 ]
 
+// concept: décomposer une expression booléenne complexe pas à pas
 #ex("Circuit logique")[
   Décomposer l'évaluation de cette expression : `not (10 == 10.0) or (5 * 2 > 8)`
 
@@ -63,12 +68,14 @@
   - Résultat final #a[`True`]
 ]
 
+// concept: concaténation de chaînes avec +, assembler un message depuis des fragments
 #ex("Construction de message")[
   En utilisant uniquement les chaînes `"Alerte"`, `"Rouge"`, `"!"` et une chaîne contenant un espace `" "`, écrire l'expression (avec l'opérateur de concaténation `+`) pour obtenir : `"Alerte Rouge!"`.
 
   Réponse #a[`"Alerte" + " " + "Rouge" + "!"`]
 ]
 
+// concept: priorité des opérateurs booléens (not > and > or), rôle des parenthèses
 #ex("L'ordre des priorités")[
   Décomposer les étapes de l'évaluation de ces deux expressions :
   - `not(True or True)` #a[`not(True)` -> `False`]
@@ -84,6 +91,7 @@
   ]
 ]
 
+// concept: comparaison de chaînes (ordre lexicographique, sensibilité à la casse)
 #ex("Le classement alphabétique")[
   Déterminer si ces expressions sont `True` ou `False` :
   - `"Zèbre" < "Abeille"` #a[`False`]
@@ -96,6 +104,7 @@
   ]
 ]
 
+// concept: décomposer une expression avec **, %, ==, not, and en plusieurs sous-étapes
 #ex("Le système de sécurité")[
   Un coffre-fort s'ouvre si l'expression suivante est `True`:
 

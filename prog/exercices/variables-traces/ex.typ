@@ -4,6 +4,7 @@
 
 #title[ Exercices python : Variables - Traces ]
 
+// concept: tracer l'exécution ligne par ligne, variables int et bool, opérateur not
 #ex("Moo Deng")[
   Écrire la trace de l'execution de ce programme:
   ```
@@ -38,6 +39,7 @@
   ]
 ]
 
+// concept: traduire une règle métier en expression booléenne avec and
 #ex("Distributeur de bonbons (logique booléenne)")[
   Un distributeur donne un bonbon si:
   - On a mis de l'argent
@@ -64,6 +66,7 @@
   ]
 ]
 
+// concept: affecter des variables str, construire une chaîne par concaténation
 #ex("La carte de visite")[
   Écrire le code python qui:
   + Crée ces 3 variables :
@@ -84,6 +87,7 @@
   ]
 ]
 
+// concept: variable intermédiaire, opérateur puissance **
 #ex("Carré")[
   Écrire le code python qui:
   - Crée une variable `x` contenant un nombre de votre choix.
@@ -98,6 +102,7 @@
   ]
 ]
 
+// concept: prédire l'affichage de print, repérer une TypeError (concaténation str + int)
 #ex("Que s'affiche-t-il ?")[
   Écrire ce que chaque `print` affiche:
 
@@ -130,6 +135,7 @@
 
 
 
+// concept: stocker le résultat d'une comparaison == dans une variable booléenne
 #ex("Afficher une pub (logique booléenne)")[
   Vous possédez un réseau social.
   Dans leur profil les utilisateur·ices renseignent une variable `passion`qui peut prendre des valeurs diverses: `cinéma`, `jardinage`, `programmation`, etc
@@ -153,6 +159,7 @@
   ]
 ]
 
+// concept: étendre une condition avec or, plusieurs valeurs acceptables
 #ex("Pub suite")[
   Modifier le programme précédent pour prendre en compte cette nouvelle règle:
 
@@ -161,6 +168,7 @@
   `montrer_pub =` #al[ ``` passion == "escalade" or passion == "alpinisme" ``` ]
 ]
 
+// concept: concaténation de types mixtes (str, float, bool), conversions str() obligatoires
 #ex("Le rapport de mission")[
   Écrire le code python qui:
   + Crée ces 3 variables et leur assigne leurs valeurs respectives :
@@ -184,6 +192,7 @@
 ]
 
 
+// concept: variable temporaire pour l'échange, montrer pourquoi a=b détruit une valeur
 #ex("Échanger la valeur de deux variables")[
   On aimerait échanger la _valeur_ de deux variables
   ```

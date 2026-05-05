@@ -11,6 +11,7 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
 
 #image("schema.svg", width: 100%)
 
+// concept: SELECT DISTINCT, ORDER BY
 #ex("Langues")[
   Afficher les langues des pays présents dans la base, sans doublons, par ordre alphabétique.
 
@@ -21,6 +22,7 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   ```]
 ]
 
+// concept: JOIN sur deux tables, colonnes issues de tables différentes
 #ex("Albums")[
   Afficher tous les albums avec deux colonnes supplémentaires : le nom du style musical et le prénom de l'artiste.
 
@@ -32,6 +34,7 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   ```]
 ]
 
+// concept: JOIN + GROUP BY + COUNT(*) + ORDER BY agrégat
 #ex("Styles musicaux")[
   Afficher le nom de chaque style musical avec le nombre d'albums dans ce style. Les styles avec le plus d'albums doivent apparaître en premier.
 
@@ -44,6 +47,7 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   ```]
 ]
 
+// concept: JOIN + GROUP BY + fonctions d'agrégation MIN, MAX, AVG
 #ex("Notes par album")[
   Afficher pour chaque album : le titre, le minimum, le maximum et la moyenne des notes obtenues.
 
@@ -55,6 +59,7 @@ La base de données _musique.sqlite_ contient des informations sur des artistes,
   ```]
 ]
 
+// concept: JOIN + GROUP BY + HAVING pour filtrer sur un agrégat
 #ex("Utilisateurs actifs")[
   Afficher le pseudo des utilisateurs ayant noté au moins 50 albums, ainsi que leur nombre de notes.
 
